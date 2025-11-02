@@ -1,7 +1,7 @@
 ---
-**Topic:** [Module Name or Topic]
-**Source:** [Link to source material]
-**Confidence:** [Your rating from 1 to 5]
+Topic: [Module Name or Topic]
+Source: [Link to source material]
+Confidence: [Your rating from 1 to 5]
 ---
 
 # Core Notes

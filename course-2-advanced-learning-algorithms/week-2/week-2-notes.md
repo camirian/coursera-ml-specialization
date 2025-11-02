@@ -1,7 +1,7 @@
 ---
-**Topic:** Course 2: Advanced Learning Algorithms - Week 2
-**Source:** [Link to Coursera module for this week]
-**Confidence:** [Your rating from 1 to 5]
+Topic: Course 2: Advanced Learning Algorithms - Week 2
+Source: [Link to Coursera module for this week]
+Confidence: [Your rating from 1 to 5]
 ---
 
 # Core Notes
@@ -15,59 +15,40 @@
 
 ---
 
-## Key Concept 1: [Replace with concept name]
+## Key Concept 1: Training Neural Networks & Backpropagation
 
 -   🔑 **Key Definitions:**
-    -   Definition
+    -   **Backpropagation:** The algorithm used to train neural networks. It calculates the gradient of the cost function with respect to the weights of the network, allowing us to update the weights using gradient descent.
+    -   **Chain Rule:** The mathematical foundation of backpropagation. It's used to compute the derivatives of the cost function with respect to each weight in the network, layer by layer.
+-   💡 **Insight:** Backpropagation is essentially "forward propagation" in reverse. After making a prediction (forward pass), you calculate the error and propagate it backward through the network to update the weights.
 
--   ❓ **Questions:**
-    -   Question
-
--   🔗 **Connections:**
-    -   Connection
-
--   💡 **Insight:**
-    -   Insight
-
--   ⚠️ **Warnings:**
-    -   Warning
-
-## Key Concept 2: [Replace with concept name]
+## Key Concept 2: Gradient Checking
 
 -   🔑 **Key Definitions:**
-    -   Definition
-
--   ❓ **Questions:**
-    -   Question
-
--   🔗 **Connections:**
-    -   Connection
-
--   💡 **Insight:**
-    -   Insight
-
+    -   **Gradient Checking:** A method for verifying that your implementation of backpropagation is correct. It involves numerically approximating the gradients and comparing them to the gradients computed by backpropagation.
+-   💡 **Insight:** Gradient checking is a crucial debugging tool for complex neural network implementations. It gives you confidence that your gradients are being calculated correctly.
 -   ⚠️ **Warnings:**
-    -   Warning
+    -   Gradient checking is computationally very expensive. It should only be used for debugging and should be turned off during training.
 
-## Key Concept 3: [Replace with concept name]
+## Key Concept 3: Hyperparameter Tuning
 
 -   🔑 **Key Definitions:**
-    -   Definition
-
+    -   **Hyperparameters:** Parameters that are not learned by the model but are set before the training process begins. Examples include the learning rate, the number of hidden layers, the number of neurons per layer, and the regularization parameter.
+-   💡 **Insight:** Finding the right hyperparameters is critical for getting good performance from a neural network. This is often an iterative process of trial and error.
 -   ❓ **Questions:**
-    -   Question
+    -   What are some common strategies for hyperparameter tuning? (Grid search, random search, Bayesian optimization).
 
--   🔗 **Connections:**
-    -   Connection
+## Key Concept 4: Optimization Algorithms
 
--   💡 **Insight:**
-    -   Insight
-
--   ⚠️ **Warnings:**
-    -   Warning
+-   🔑 **Key Definitions:**
+    -   **Adam (Adaptive Moment Estimation):** A popular and effective optimization algorithm that adapts the learning rate for each parameter. It combines the ideas of Momentum and RMSprop.
+    -   **Momentum:** An optimization algorithm that helps accelerate gradient descent in the relevant direction and dampens oscillations.
+-   🔗 **Connection:** Adam is often the default choice for an optimizer because it works well on a wide range of problems and is less sensitive to the choice of learning rate than standard gradient descent.
 
 ---
 
 # Module Summary
 
 *(After finishing the module, write a 3-5 sentence summary here from memory **before** reviewing your notes above. This is a critical step for retention.)*
+
+This week was all about how to train neural networks effectively. The core algorithm, backpropagation, was introduced as the method for calculating the gradients needed to update the network's weights. I learned how to verify my implementation of backpropagation using gradient checking. The important topic of hyperparameter tuning was also covered, along with more advanced optimization algorithms like Adam, which can significantly speed up the training process.
