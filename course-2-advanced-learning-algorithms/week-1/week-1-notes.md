@@ -1,7 +1,7 @@
 ---
-Topic: Course 2: Advanced Learning Algorithms - Week 1
-Source: [Link to Coursera module for this week]
-Confidence: [Your rating from 1 to 5]
+Topic: "Course 2: Advanced Learning Algorithms - Week 1"
+Source: "[Link to Coursera module for this week]"
+Confidence: "[Your rating from 1 to 5]"
 ---
 
 # Core Notes
