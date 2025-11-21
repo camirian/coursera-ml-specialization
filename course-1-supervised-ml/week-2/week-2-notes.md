@@ -1,54 +1,85 @@
 ---
 Topic: "Course 1: Supervised Machine Learning: Regression and Classification - Week 2"
-Source: "[Link to Coursera module for this week]"
-Confidence: "[Your rating from 1 to 5]"
+Source: "Coursera / Andrew Ng"
 ---
 
-# Core Notes
+# Week 2: Regression with Multiple Input Variables
 
-* **My Legend:**
-    * 🔑 **Key Definition:** For critical, must-know vocabulary.
-    * ❓ **Question:** For things you don't understand or want to explore later.
-    * 🔗 **Connection:** For links to your existing knowledge.
-    * 💡 **Insight:** For "aha!" moments or key takeaways.
-    * ⚠️ **Warning:** For common mistakes, pitfalls, or important limitations.
+## 1. Multiple Linear Regression
+Extending linear regression to handle multiple features (variables).
+
+*   **Notation:**
+    *   $n$: Number of features.
+    *   $x_j$: The $j$-th feature.
+    *   $\vec{x}$: Feature vector (including $x_0=1$).
+    *   $\vec{w}$: Parameter vector (weights).
+    *   $b$: Bias term (formerly $\theta_0$).
+
+*   **Hypothesis Function (Vectorized):**
+    $$f_{\vec{w},b}(\vec{x}) = \vec{w} \cdot \vec{x} + b = w_1 x_1 + w_2 x_2 + ... + w_n x_n + b$$
+
+## 2. Vectorization
+Using linear algebra libraries (like NumPy) to compute predictions for all examples simultaneously, rather than using `for` loops. This is significantly faster.
+
+*   **Python Example:**
+    ```python
+    f = np.dot(w, x) + b  # Much faster than a loop
+    ```
+
+## 3. Gradient Descent for Multiple Regression
+The update rule is the same, but applied to each parameter $w_j$.
+
+$$w_j := w_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}) x_j^{(i)}$$
+$$b := b - \alpha \frac{1}{m} \sum_{i=1}^{m} (f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)})$$
+
+## 4. Practical Tips for Gradient Descent
+
+### Feature Scaling
+If features have very different ranges (e.g., House Size: 0-2000, Bedrooms: 1-5), gradient descent will oscillate and be slow.
+*   **Goal:** Scale features to roughly $-1 \le x_j \le 1$.
+*   **Mean Normalization:** $x_j := \frac{x_j - \mu_j}{max - min}$
+*   **Z-score Normalization:** $x_j := \frac{x_j - \mu_j}{\sigma_j}$
+
+### Learning Rate ($\alpha$)
+*   **Debugging:** Plot $J(\vec{w},b)$ vs. Number of Iterations. It should decrease every iteration.
+*   **Choice:**
+    *   If $J$ increases: $\alpha$ is too big.
+    *   If $J$ decreases very slowly: $\alpha$ is too small.
+    *   Try values like: 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1...
+
+## 5. Polynomial Regression
+We can fit non-linear curves by creating new features from existing ones.
+*   Example: If we have feature $x$ (size), we can create $x^2$ (size squared) or $x^3$ to fit a curve.
+*   $$f(x) = w_1 x + w_2 x^2 + w_3 x^3 + b$$
+*   *Important:* Feature scaling is critical here because $x^2$ and $x^3$ will have huge ranges.
 
 ---
 
-## Key Concept 1: Multiple Linear Regression
+# Self-Assessment Quiz
+<details>
+<summary><strong>Q1: Why is Vectorization preferred over `for` loops?</strong></summary>
+<br>
+**Answer:**
+Vectorization allows the computer to use parallel hardware (SIMD) to perform calculations much faster than sequential loops. It also leads to shorter, cleaner code.
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Multiple Linear Regression:** An extension of simple linear regression that uses multiple features (variables) to predict an outcome. The hypothesis is of the form `h(x) = θ₀ + θ₁x₁ + θ₂x₂ + ... + θₙxₙ`.
-    -   **Vectorization:** The practice of using matrix and vector operations to perform calculations on large datasets instead of using loops. This is much more efficient.
--   💡 **Insight:** Vectorization is a key technique for making machine learning algorithms run faster. Instead of iterating over each training example, we can process them all at once in a single matrix operation.
+<details>
+<summary><strong>Q2: Why do we perform Feature Scaling?</strong></summary>
+<br>
+**Answer:**
+To ensure all features have a similar range (e.g., -1 to 1). This makes the cost function "rounder" (contours look like circles rather than elongated ellipses), allowing Gradient Descent to converge much faster.
+</details>
 
-## Key Concept 2: Feature Scaling and Mean Normalization
+<details>
+<summary><strong>Q3: If the Cost Function $J$ is increasing over iterations, what should you do?</strong></summary>
+<br>
+**Answer:**
+The learning rate $\alpha$ is likely too large. You should decrease it.
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Feature Scaling:** The process of scaling input features to a similar range. This helps gradient descent converge more quickly.
-    -   **Mean Normalization:** A specific type of feature scaling where you subtract the mean from each feature and divide by the range (max - min) or standard deviation.
--   ⚠️ **Warnings:**
-    -   When you use feature scaling, you must apply the same scaling to new inputs when making predictions.
-
-## Key Concept 3: Logistic Regression for Classification
-
--   🔑 **Key Definitions:**
-    -   **Logistic Regression:** A classification algorithm that models the probability of a discrete outcome. Despite its name, it's used for classification, not regression.
-    -   **Sigmoid (Logistic) Function:** A function that maps any real-valued number to a value between 0 and 1. It's used as the hypothesis function in logistic regression. `g(z) = 1 / (1 + e⁻ᶻ)`.
--   💡 **Insight:** The output of the sigmoid function can be interpreted as the probability of the positive class (e.g., the probability that an email is spam).
-
-## Key Concept 4: Decision Boundary
-
--   🔑 **Key Definitions:**
-    -   **Decision Boundary:** The line or surface that separates the different classes in a classification problem. It is a property of the hypothesis function, not the dataset.
--   ❓ **Questions:**
-    -   Can decision boundaries be non-linear? (Yes, by using polynomial features in logistic regression).
-    -   How do you visualize a decision boundary for a dataset with more than two features?
-
----
-
-# Module Summary
-
-*(After finishing the module, write a 3-5 sentence summary here from memory **before** reviewing your notes above. This is a critical step for retention.)*
-
-This week built upon the foundations of linear regression by extending it to multiple features. I learned the importance of vectorization for efficiency and feature scaling for faster convergence of gradient descent. The focus then shifted to classification problems, introducing logistic regression and the sigmoid function to predict probabilities. A key concept was the decision boundary, which visually separates the classes learned by the model.
+<details>
+<summary><strong>Q4: True or False: In Polynomial Regression, you are changing the model from Linear Regression to something else.</strong></summary>
+<br>
+**Answer:**
+**False.** It is still Linear Regression, but the *features* are non-linear (e.g., $x^2$). The model is still linear with respect to the parameters $w$.
+</details>

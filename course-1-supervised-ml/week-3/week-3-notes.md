@@ -1,53 +1,81 @@
 ---
 Topic: "Course 1: Supervised Machine Learning: Regression and Classification - Week 3"
-Source: "[Link to Coursera module for this week]"
-Confidence: "[Your rating from 1 to 5]"
+Source: "Coursera / Andrew Ng"
 ---
 
-# Core Notes
+# Week 3: Classification & Overfitting
 
-* **My Legend:**
-    * 🔑 **Key Definition:** For critical, must-know vocabulary.
-    * ❓ **Question:** For things you don't understand or want to explore later.
-    * 🔗 **Connection:** For links to your existing knowledge.
-    * 💡 **Insight:** For "aha!" moments or key takeaways.
-    * ⚠️ **Warning:** For common mistakes, pitfalls, or important limitations.
+## 1. Logistic Regression
+Used for **Classification** problems where $y \in \{0, 1\}$.
+*   **Sigmoid Function:**
+    $$g(z) = \frac{1}{1 + e^{-z}}$$
+    *   Outputs values between 0 and 1.
+    *   Interpreted as probability: $P(y=1 | x; \vec{w}, b)$.
+
+*   **Hypothesis:**
+    $$f_{\vec{w},b}(\vec{x}) = g(\vec{w} \cdot \vec{x} + b)$$
+
+*   **Decision Boundary:**
+    *   Predict $y=1$ if $f(x) \ge 0.5$ (which means $z \ge 0$).
+    *   Predict $y=0$ if $f(x) < 0.5$ (which means $z < 0$).
+
+## 2. Cost Function for Logistic Regression
+We cannot use Squared Error because it results in a non-convex function (many local minima).
+*   **Loss Function (Binary Cross-Entropy):**
+    $$L(f_{\vec{w},b}(\vec{x}), y) = -y \log(f_{\vec{w},b}(\vec{x})) - (1-y) \log(1 - f_{\vec{w},b}(\vec{x}))$$
+*   **Cost Function:**
+    $$J(\vec{w},b) = \frac{1}{m} \sum_{i=1}^{m} L(f_{\vec{w},b}(\vec{x}^{(i)}), y^{(i)})$$
+
+## 3. The Problem of Overfitting
+*   **Underfitting (High Bias):** Model is too simple to capture the trend. High training error, high test error.
+*   **Overfitting (High Variance):** Model is too complex, memorizing noise. Low training error, high test error.
+*   **Generalization:** The ability of the model to perform well on new, unseen data.
+
+### Addressing Overfitting
+1.  **Collect more data:** Helps the model learn the true underlying pattern.
+2.  **Select features:** Remove irrelevant features (Feature Selection).
+3.  **Regularization:** Reduce the magnitude of parameters $w_j$.
+
+## 4. Regularization
+Add a penalty term to the cost function to discourage large weights.
+
+*   **Regularized Cost Function:**
+    $$J(\vec{w},b) = \frac{1}{m} \sum_{i=1}^{m} L(...) + \frac{\lambda}{2m} \sum_{j=1}^{n} w_j^2$$
+    *   $\lambda$ (Lambda): **Regularization Parameter**.
+    *   If $\lambda$ is very large $\rightarrow$ Underfitting (weights $\approx$ 0).
+    *   If $\lambda$ is 0 $\rightarrow$ Overfitting (standard logistic regression).
+
+*   **Gradient Descent with Regularization:**
+    $$w_j := w_j - \alpha [\frac{1}{m} \sum ... + \frac{\lambda}{m} w_j]$$
+    *   The term $\frac{\lambda}{m} w_j$ shrinks the weight on every step.
 
 ---
 
-## Key Concept 1: The Problem of Overfitting
+# Self-Assessment Quiz
+<details>
+<summary><strong>Q1: Why can't we use the Squared Error cost function for Logistic Regression?</strong></summary>
+<br>
+**Answer:**
+Using Squared Error with the Sigmoid function results in a **non-convex** cost function with many local minima, making it difficult for Gradient Descent to find the global minimum.
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Underfitting (High Bias):** When a model is too simple to capture the underlying trend of the data. It performs poorly on both the training and test sets.
-    -   **Overfitting (High Variance):** When a model is too complex and captures the noise in the training data. It performs well on the training set but poorly on the test set.
--   💡 **Insight:** The goal is to find a "Goldilocks" model that is not too simple and not too complex, generalizing well to new, unseen data.
--   ❓ **Questions:**
-    -   How can you tell if your model is overfitting or underfitting? (By comparing training error to validation/test error).
+<details>
+<summary><strong>Q2: If a model has very low training error but very high test error, what is it suffering from?</strong></summary>
+<br>
+**Answer:**
+**Overfitting (High Variance).** The model has memorized the training data but fails to generalize to new data.
+</details>
 
-## Key Concept 2: Regularization
+<details>
+<summary><strong>Q3: How does increasing the regularization parameter $\lambda$ affect the model?</strong></summary>
+<br>
+**Answer:**
+Increasing $\lambda$ increases the penalty on large weights, forcing the model to be simpler. This reduces variance (overfitting) but increases bias (underfitting).
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Regularization:** A technique used to prevent overfitting by adding a penalty term to the cost function. This discourages the model from learning overly complex patterns.
-    -   **L1 Regularization (Lasso):** Adds a penalty proportional to the absolute value of the coefficients. It can shrink some coefficients to exactly zero, performing feature selection.
-    -   **L2 Regularization (Ridge):** Adds a penalty proportional to the square of the coefficients. It shrinks coefficients towards zero but doesn't usually set them to exactly zero.
--   ⚠️ **Warnings:**
-    -   The regularization parameter (lambda) needs to be chosen carefully. If it's too large, it can lead to underfitting.
-
-## Key Concept 3: The Normal Equation
-
--   🔑 **Key Definitions:**
-    -   **Normal Equation:** An analytical approach to solving for the optimal parameters (theta) in linear regression without using an iterative method like Gradient Descent. It computes the solution directly using the formula: `θ = (XᵀX)⁻¹Xᵀy`.
--   💡 **Insight:** The Normal Equation is a good alternative to Gradient Descent for smaller datasets where computing the inverse of a matrix is feasible.
--   🔗 **Connections:**
-    -   This is a closed-form solution, similar to solving a system of linear equations directly, whereas Gradient Descent is an iterative numerical method.
--   ⚠️ **Warnings:**
-    -   The Normal Equation can be computationally expensive for large datasets (when the number of features 'n' is large) because of the matrix inversion step `(XᵀX)⁻¹`.
-    -   It cannot be used for more complex algorithms like logistic regression.
-
----
-
-# Module Summary
-
-*(After finishing the module, write a 3-5 sentence summary here from memory **before** reviewing your notes above. This is a critical step for retention.)*
-
-This week focused on improving the performance and generalization of machine learning models. I learned to diagnose the problems of overfitting (high variance) and underfitting (high bias). The main technique to combat overfitting, regularization (both L1 and L2), was introduced, which adds a penalty to the cost function to keep model parameters small. Finally, I learned about the Normal Equation as a direct, non-iterative method to solve for the optimal parameters in linear regression, understanding its advantages and disadvantages compared to Gradient Descent.
+<details>
+<summary><strong>Q4: True or False: We usually regularize the bias term $b$.</strong></summary>
+<br>
+**Answer:**
+**False.** By convention, we usually only regularize the weights $w_1, ..., w_n$ and leave the bias term $b$ unregularized, although regularizing $b$ makes little difference in practice.
+</details>

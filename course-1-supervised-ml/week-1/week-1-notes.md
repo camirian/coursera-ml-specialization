@@ -1,57 +1,84 @@
 ---
 Topic: "Course 1: Supervised Machine Learning: Regression and Classification - Week 1"
-Source: "[Link to Coursera module for this week]"
-Confidence: "[Your rating from 1 to 5]"
+Source: "Coursera / Andrew Ng"
 ---
 
-# Core Notes
+# Week 1: Introduction to Supervised Learning
 
-* **My Legend:**
-    * 🔑 **Key Definition:** For critical, must-know vocabulary.
-    * ❓ **Question:** For things you don't understand or want to explore later.
-    * 🔗 **Connection:** For links to your existing knowledge.
-    * 💡 **Insight:** For "aha!" moments or key takeaways.
-    * ⚠️ **Warning:** For common mistakes, pitfalls, or important limitations.
+## 1. Introduction to Machine Learning
+Machine Learning (ML) is the science of getting computers to act without being explicitly programmed.
+
+### Two Main Types
+1.  **Supervised Learning:** The algorithm learns from *labeled* data (input $x$, output $y$).
+    *   **Regression:** Predicts a continuous number (e.g., housing prices).
+    *   **Classification:** Predicts a discrete category (e.g., spam vs. not spam).
+2.  **Unsupervised Learning:** The algorithm learns from *unlabeled* data (only input $x$).
+    *   **Clustering:** Grouping similar data points (e.g., customer segmentation).
+    *   **Dimensionality Reduction:** Compressing data.
+
+## 2. Linear Regression with One Variable
+This is the simplest form of regression, fitting a straight line to data.
+
+*   **Notation:**
+    *   $m$: Number of training examples.
+    *   $x$'s: Input variables / features.
+    *   $y$'s: Output variable / target.
+    *   $(x^{(i)}, y^{(i)})$: The $i$-th training example.
+
+*   **Hypothesis Function:**
+    $$h_\theta(x) = \theta_0 + \theta_1 x$$
+    *   $\theta_0$: y-intercept.
+    *   $\theta_1$: slope.
+
+## 3. The Cost Function (Squared Error)
+To find the best parameters ($\theta_0, \theta_1$), we minimize the difference between predicted values and actual values.
+
+*   **Formula:**
+    $$J(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2$$
+*   **Goal:** Minimize $J(\theta_0, \theta_1)$.
+*   **Intuition:** The $\frac{1}{2}$ is a convenience for the derivative calculation later. We average the squared errors.
+
+## 4. Gradient Descent
+An iterative algorithm to minimize any cost function $J$.
+
+*   **Algorithm:**
+    Repeat until convergence:
+    $$\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)$$
+    *   $\alpha$ (Alpha): **Learning Rate**. Controls how big a step we take.
+    *   The derivative term determines the direction of the step.
+
+*   **For Linear Regression (Specific Update Rules):**
+    *   $\theta_0 := \theta_0 - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})$
+    *   $\theta_1 := \theta_1 - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x^{(i)}$
+    *   *Note: Updates must be simultaneous.*
 
 ---
 
-## Key Concept 1: Introduction to Supervised Learning
+# Self-Assessment Quiz
+<details>
+<summary><strong>Q1: What is the difference between Regression and Classification?</strong></summary>
+<br>
+**Answer:**
+Regression predicts a continuous numerical output (e.g., price, temperature), while Classification predicts a discrete category or label (e.g., yes/no, cat/dog/bird).
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Machine Learning:** The field of study that gives computers the ability to learn without being explicitly programmed.
-    -   **Supervised Learning:** A type of machine learning where the algorithm learns from labeled data. The data consists of input features and corresponding output labels.
-    -   **Unsupervised Learning:** A type of machine learning where the algorithm learns from unlabeled data, finding patterns or structure in the data on its own.
--   💡 **Insight:** The key difference between supervised and unsupervised learning is the presence of a "ground truth" or "correct output" during the training phase.
+<details>
+<summary><strong>Q2: What happens if the Learning Rate ($\alpha$) is too large?</strong></summary>
+<br>
+**Answer:**
+Gradient descent may fail to converge or even diverge (overshoot the minimum and get worse).
+</details>
 
-## Key Concept 2: Regression and Classification
+<details>
+<summary><strong>Q3: What happens if the Learning Rate ($\alpha$) is too small?</strong></summary>
+<br>
+**Answer:**
+Gradient descent will work but will be very slow, taking many iterations to reach the minimum.
+</details>
 
--   🔑 **Key Definitions:**
-    -   **Regression:** A supervised learning task where the output is a continuous value (e.g., predicting the price of a house).
-    -   **Classification:** A supervised learning task where the output is a discrete category (e.g., classifying an email as "spam" or "not spam").
--   ❓ **Questions:**
-    -   What are the most common algorithms for regression and classification?
-    -   Can a problem be both regression and classification?
-
-## Key Concept 3: Linear Regression with One Variable
-
--   🔑 **Key Definitions:**
-    -   **Hypothesis Function (h(x)):** The function that maps input features (x) to an output prediction (y). In linear regression with one variable, it is of the form `h(x) = θ₀ + θ₁x`.
-    -   **Cost Function (J(θ₀, θ₁)):** A function that measures the accuracy of the hypothesis function. It calculates the average squared difference between the predicted values and the actual values. The goal is to minimize this function.
--   💡 **Insight:** The cost function provides a way to quantify how "wrong" our model's predictions are. By minimizing the cost, we find the best-fit line for our data.
-
-## Key Concept 4: Gradient Descent
-
--   🔑 **Key Definitions:**
-    -   **Gradient Descent:** An optimization algorithm used to minimize a cost function. It iteratively moves in the direction of the steepest descent of the function.
-    -   **Learning Rate (α):** A parameter that controls how big of a step we take during each iteration of gradient descent.
--   ⚠️ **Warnings:**
-    -   If the learning rate is too small, gradient descent can be very slow.
-    -   If the learning rate is too large, gradient descent can overshoot the minimum and fail to converge.
-
----
-
-# Module Summary
-
-*(After finishing the module, write a 3-5 sentence summary here from memory **before** reviewing your notes above. This is a critical step for retention.)*
-
-This week introduced the fundamental concepts of supervised machine learning. I learned about the difference between supervised and unsupervised learning, and the two main types of supervised learning problems: regression and classification. The core of the week was understanding linear regression with one variable, how to measure its performance with a cost function, and how to optimize it using gradient descent.
+<details>
+<summary><strong>Q4: In the cost function $J(\theta)$, what does $m$ represent?</strong></summary>
+<br>
+**Answer:**
+$m$ represents the number of training examples in the dataset.
+</details>
