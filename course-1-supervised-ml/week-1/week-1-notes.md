@@ -26,9 +26,9 @@ This is the simplest form of regression, fitting a straight line to data.
     *   $(x^{(i)}, y^{(i)})$: The $i$-th training example.
 
 *   **Hypothesis Function:**
-    $$h_\theta(x) = \theta_0 + \theta_1 x$$
-    *   $\theta_0$: y-intercept.
-    *   $\theta_1$: slope.
+    $$h_\theta(x) = \theta_0 + \theta_1 x$$ or $$f_{w,b}(x^{(i)}) = wx^{(i)}+b$$
+    *   $\theta_0$: y-intercept. This is also called the parameter "bias" ($b$) or "intercept".
+    *   $\theta_1$: slope. This is also called the parameter "weight" ($w$) or "coefficient".
 
 ## 3. The Cost Function (Squared Error)
 To find the best parameters ($\theta_0, \theta_1$), we minimize the difference between predicted values and actual values.
