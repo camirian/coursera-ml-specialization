@@ -1,7 +1,6 @@
 ---
 Topic: "Course 2: Advanced Learning Algorithms - Week 2"
-Source: "[Link to Coursera module for this week]"
-Confidence: "[Your rating from 1 to 5]"
+Source: "Coursera / Andrew Ng"
 ---
 
 # Core Notes
