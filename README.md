@@ -36,6 +36,14 @@ The repository is organized as follows:
 └── README.md
 ```
 
+## Enhanced Learning Experience
+
+This repository goes beyond standard note-taking by incorporating interactive and visual elements to deepen understanding:
+
+*   **📊 Visualizations:** Complex concepts like Neural Networks, Decision Trees, and K-Means clustering are visualized directly in the markdown using **Mermaid diagrams**.
+*   **💻 Code Snippets:** Practical **Python/NumPy** implementations of key functions (e.g., Sigmoid, ReLU) are provided alongside the theory.
+*   **navigation:** All notes include a **Table of Contents** for quick navigation to specific topics.
+
 ## Note-Taking System (SQN)
 
 This project uses a "Structured Queryable Notes" (SQN) system to facilitate active learning and retention.

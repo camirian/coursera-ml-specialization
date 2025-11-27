@@ -6,6 +6,21 @@ Confidence: "[Your rating from 1 to 5]"
 
 # Core Notes
 
+## Table of Contents
+1.  [Topic 1](#key-concept-1-topic-1)
+2.  [Topic 2](#key-concept-2-topic-2)
+
+### Visualizing ... (Mermaid)
+```mermaid
+graph TD
+    A[Start] --> B[End]
+```
+
+### Python Implementation
+```python
+# Code here
+```
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.
