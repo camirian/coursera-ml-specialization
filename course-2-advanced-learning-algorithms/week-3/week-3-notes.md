@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Decision Trees](#key-concept-1-decision-trees)
+2.  [Building Decision Trees](#key-concept-2-building-decision-trees)
+3.  [Tree Ensembles](#key-concept-3-tree-ensembles)
+4.  [Advice for Applying Machine Learning](#key-concept-4-advice-for-applying-machine-learning)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.
@@ -22,6 +28,16 @@ Source: "Coursera / Andrew Ng"
     -   **Leaf Node:** A terminal node in a decision tree that represents a class label or a continuous value.
     -   **Splitting:** The process of dividing a node into two or more sub-nodes.
 -   💡 **Insight:** Decision trees are easy to understand and interpret. The learned model can be visualized as a flowchart.
+
+### Visualizing a Decision Tree Split
+```mermaid
+graph TD
+    A[Is Ear Shape Pointy?]
+    A -->|Yes| B[Cat]
+    A -->|No| C[Is Face Round?]
+    C -->|Yes| D[Dog]
+    C -->|No| E[Other]
+```
 
 ## Key Concept 2: Building Decision Trees
 

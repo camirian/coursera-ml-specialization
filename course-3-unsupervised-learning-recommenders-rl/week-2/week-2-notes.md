@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Introduction to Recommender Systems](#key-concept-1-introduction-to-recommender-systems)
+2.  [Content-Based Filtering](#key-concept-2-content-based-filtering)
+3.  [Collaborative Filtering](#key-concept-3-collaborative-filtering)
+4.  [Matrix Factorization](#key-concept-4-matrix-factorization)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.

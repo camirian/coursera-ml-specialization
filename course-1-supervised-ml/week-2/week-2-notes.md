@@ -5,6 +5,13 @@ Source: "Coursera / Andrew Ng"
 
 # Week 2: Regression with Multiple Input Variables
 
+## Table of Contents
+1.  [Multiple Linear Regression](#1-multiple-linear-regression)
+2.  [Vectorization](#2-vectorization)
+3.  [Gradient Descent for Multiple Regression](#3-gradient-descent-for-multiple-regression)
+4.  [Practical Tips for Gradient Descent](#4-practical-tips-for-gradient-descent)
+5.  [Polynomial Regression](#5-polynomial-regression)
+
 ## 1. Multiple Linear Regression
 Extending linear regression to handle multiple features (variables).
 

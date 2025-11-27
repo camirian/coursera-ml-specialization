@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Week 1: Introduction to Supervised Learning
 
+## Table of Contents
+1.  [Introduction to Machine Learning](#1-introduction-to-machine-learning)
+2.  [Linear Regression with One Variable](#2-linear-regression-with-one-variable)
+3.  [The Cost Function (Squared Error)](#3-the-cost-function-squared-error)
+4.  [Gradient Descent](#4-gradient-descent)
+
 ## 1. Introduction to Machine Learning
 Machine Learning (ML) is the science of getting computers to act without being explicitly programmed.
 

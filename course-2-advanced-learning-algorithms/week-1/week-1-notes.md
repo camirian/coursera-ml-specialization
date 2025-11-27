@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Introduction to Neural Networks](#key-concept-1-introduction-to-neural-networks)
+2.  [Model Representation](#key-concept-2-model-representation)
+3.  [Activation Functions](#key-concept-3-activation-functions)
+4.  [Forward Propagation](#key-concept-4-forward-propagation)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.
@@ -21,6 +27,36 @@ Source: "Coursera / Andrew Ng"
     -   **Neuron:** A single computational unit in a neural network that takes multiple inputs, performs a calculation, and produces an output.
 -   💡 **Insight:** Neural networks are capable of learning very complex, non-linear relationships in data, which is why they are so powerful for tasks like image recognition and natural language processing.
 -   🔗 **Connection:** A single neuron in a neural network is very similar to a logistic regression unit. A neural network is essentially a collection of these neurons stacked together in layers.
+
+### Visualizing a Simple Neural Network
+```mermaid
+graph LR
+    subgraph Input Layer
+    x1((x1))
+    x2((x2))
+    x3((x3))
+    end
+    subgraph Hidden Layer
+    a1((a1))
+    a2((a2))
+    a3((a3))
+    end
+    subgraph Output Layer
+    h((Output))
+    end
+    x1 --> a1
+    x1 --> a2
+    x1 --> a3
+    x2 --> a1
+    x2 --> a2
+    x2 --> a3
+    x3 --> a1
+    x3 --> a2
+    x3 --> a3
+    a1 --> h
+    a2 --> h
+    a3 --> h
+```
 
 ## Key Concept 2: Model Representation
 
@@ -40,6 +76,23 @@ Source: "Coursera / Andrew Ng"
 -   💡 **Insight:** ReLU is often the default choice for hidden layers because it is computationally efficient and helps to mitigate the "vanishing gradient" problem.
 -   ⚠️ **Warnings:**
     -   The sigmoid function can suffer from the vanishing gradient problem, where the gradients become very small, making it difficult for the network to learn.
+
+### Python Implementation
+```python
+import numpy as np
+
+def sigmoid(z):
+    """
+    Compute the sigmoid of z
+    """
+    return 1 / (1 + np.exp(-z))
+
+def relu(z):
+    """
+    Compute the ReLU of z
+    """
+    return np.maximum(0, z)
+```
 
 ## Key Concept 4: Forward Propagation
 

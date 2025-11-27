@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Introduction to Reinforcement Learning](#key-concept-1-introduction-to-reinforcement-learning)
+2.  [Markov Decision Processes (MDPs)](#key-concept-2-markov-decision-processes-mdps)
+3.  [Value Functions and Policies](#key-concept-3-value-functions-and-policies)
+4.  [Q-Learning](#key-concept-4-q-learning)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.

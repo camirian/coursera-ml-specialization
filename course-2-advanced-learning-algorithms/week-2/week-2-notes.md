@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Training Neural Networks & Backpropagation](#key-concept-1-training-neural-networks--backpropagation)
+2.  [Gradient Checking](#key-concept-2-gradient-checking)
+3.  [Hyperparameter Tuning](#key-concept-3-hyperparameter-tuning)
+4.  [Optimization Algorithms](#key-concept-4-optimization-algorithms)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.

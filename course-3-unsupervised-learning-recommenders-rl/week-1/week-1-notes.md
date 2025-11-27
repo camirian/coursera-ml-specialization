@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Core Notes
 
+## Table of Contents
+1.  [Introduction to Unsupervised Learning](#key-concept-1-introduction-to-unsupervised-learning)
+2.  [Clustering](#key-concept-2-clustering)
+3.  [K-Means Algorithm](#key-concept-3-k-means-algorithm)
+4.  [K-Means Cost Function](#key-concept-4-k-means-cost-function)
+
 * **My Legend:**
     * 🔑 **Key Definition:** For critical, must-know vocabulary.
     * ❓ **Question:** For things you don't understand or want to explore later.
@@ -34,6 +40,17 @@ Source: "Coursera / Andrew Ng"
     -   **K-Means:** An iterative clustering algorithm that aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean.
     -   **Cluster Centroid:** The center of a cluster, calculated as the mean of all the points in the cluster.
 -   💡 **Insight:** The K-Means algorithm is simple and computationally efficient, making it a popular choice for clustering tasks.
+
+### Visualizing K-Means Algorithm
+```mermaid
+flowchart TD
+    Start([Start]) --> Init[Initialize K Centroids]
+    Init --> Assign[Assign Points to Nearest Centroid]
+    Assign --> Update[Move Centroids to Mean of Points]
+    Update --> Check{Converged?}
+    Check -->|No| Assign
+    Check -->|Yes| End([End])
+```
 -   ⚠️ **Warnings:**
     -   The number of clusters, K, must be specified beforehand.
     -   The algorithm is sensitive to the initial placement of centroids. It's common to run K-Means multiple times with different random initializations and choose the result with the lowest cost.

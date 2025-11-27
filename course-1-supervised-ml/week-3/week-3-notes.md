@@ -5,6 +5,12 @@ Source: "Coursera / Andrew Ng"
 
 # Week 3: Classification & Overfitting
 
+## Table of Contents
+1.  [Logistic Regression](#1-logistic-regression)
+2.  [Cost Function for Logistic Regression](#2-cost-function-for-logistic-regression)
+3.  [The Problem of Overfitting](#3-the-problem-of-overfitting)
+4.  [Regularization](#4-regularization)
+
 ## 1. Logistic Regression
 Used for **Classification** problems where $y \in \{0, 1\}$.
 *   **Sigmoid Function:**
